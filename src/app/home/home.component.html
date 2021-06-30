@@ -1,0 +1,36 @@
+<div class="home">
+    <div class="container">
+        <div class="home__box">
+            <div>
+                <p class="home__title">EcoStyle</p>
+                <p class="home__subtitle">Наша компания занимается работой по дереву любой сложности</p>
+                <div class="home__box_titles">
+                    <div class="home__cell">
+                        <img src="./assets/images/phone.png" alt="phone" width="25px">
+                        <p class="home__cell_data"> 8-962-400-83-66</p>
+                    </div>
+            
+                    <div class="home__cell">
+                        <img src="./assets/images/email.png" alt="email" width="25px" style="margin-bottom: 3px;">
+                        <p class="home__cell_data"> ecostyle126@gmail.com</p>
+                    </div>
+            
+                    <div class="home__cell">
+                        <img src="./assets/images/instagram.png" alt="instagram" height="28px">
+                        <p class="home__cell_data"> ecostyle26</p>
+                    </div>
+                </div>
+            </div>
+            <carousel 
+                [images]="images" 
+                [width]="600" 
+                [height]="400" 
+                [cellsToShow]="1"
+                [loop]="true"
+                [lightDOM]="true"
+                [autoplay]="true"
+                [dots]="true">
+            </carousel>
+        </div>
+    </div>
+</div> 

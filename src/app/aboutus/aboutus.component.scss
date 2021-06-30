@@ -1,0 +1,25 @@
+.bg {
+    background-color: rgba(255, 255, 255, 0.5);
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+}
+.aboutus {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 300px;
+}
+.aboutus__subtitle {
+    font-size: 30px;
+    line-height: 1.5;
+}
+@media(max-width: 900px) {
+    .aboutus {
+        padding-top: 150px;
+    }
+}
+@media(max-width: 600px) {
+    .aboutus__subtitle {
+        font-size: 20px;
+    }
+}

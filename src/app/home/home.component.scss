@@ -1,0 +1,49 @@
+.home {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+.home__box {
+    margin-top: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.home__title {
+    font-size: 130px;
+    color: #57cc99;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+.home__subtitle {
+    font-size: 30px;
+    font-weight: 300;
+    color: #000;
+}
+.home__box_titles {
+    margin-top: 30px;
+}
+.home__cell_data {
+    font-size: 25px;
+    display: inline-block;
+    color: #000;
+    margin-left: 5px;
+}
+carousel {
+    z-index: 1;
+    width: 600px;
+}
+@media(max-width: 1160px) {
+    carousel {
+        display: none;
+    }
+}
+@media(max-width: 550px) {
+    .home__title {
+        font-size: 70px;
+    }
+    .home__subtitle {
+        font-size: 20px;
+    }
+    .home__cell_data {
+        font-size: 20px;
+    }
+}

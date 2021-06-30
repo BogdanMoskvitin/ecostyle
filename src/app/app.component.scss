@@ -1,0 +1,212 @@
+.bgnav {
+    background-color: #fefefe;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+.nav {
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+.nav__logo_box {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+}
+.nav__logo_img {
+    width: 35px;
+    height: 35px;
+    border-radius: 20px;
+}
+.nav__logo_title {
+    font-size: 25px;
+    margin-left: 5px;
+    font-weight: 700;
+    color: #57cc99;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+}
+.nav__ul {
+    display: block;
+}
+@media(max-width: 820px) {
+    .nav__ul {
+        display: none;
+    }
+}
+li {
+    display: inline-block;
+    text-decoration: none;
+    margin: 20px;
+}
+a {
+    text-decoration-line: none;
+    font-size: 20px;
+    color: #000000;
+    transition: all 0.3s;
+}
+a:hover {
+    color: #fca311;
+    text-decoration: underline;
+}
+.active {
+    color: #fca311;
+    text-decoration: underline;
+}
+
+
+
+ng-sidebar-container {
+    height: 100vh;
+}
+::ng-deep .ng-sidebar {
+    background-color: #d2dce6;
+    width: 100%;
+    height: 100%;
+}
+.burger__ul {
+    margin: 200px 0 0 30px; 
+    list-style: none;
+}
+.burger__li {
+    padding: 0 0 15px 0;
+    display: block;
+}
+.burger__a {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    transition: all 0.4s ease-in-out;
+    color: #000;
+    text-decoration-line: none;
+}
+.burger__a:hover {
+    color: #3333ff;
+    text-decoration-line: underline;
+}
+.burger {
+    z-index: 1010;
+    display: none;
+	width: 30px;
+    height: 30px;
+    top: 30px;
+    right: 20px;
+    position: fixed;
+    outline: none;
+    border: none;
+    background: none;
+}
+@media(max-width: 820px) {
+    .burger {
+        display: block;
+    }
+}
+.burger__line1 {
+    position: absolute;
+    left: 0;
+    top: 15px;
+    width: 30px;
+    height: 5px;
+    background-color: #3333ff;
+    border-radius: 25%;
+
+    opacity: 100;
+    transform: translateX(0);
+    transition: all 0.4s ease-in-out;
+}
+.burger__line1_active {
+	position: absolute;
+    left: 0;
+    top: 15px;
+    width: 30px;
+    height: 5px;
+    background-color: #3333ff;
+    border-radius: 25%;
+
+    opacity: 0;
+    transform: translateX(40px);
+    transition: all 0.4s ease-in-out;
+}
+.burger__line2 {
+    position: absolute;
+    left: 0;
+    top: 15px;
+    width: 30px;
+    height: 5px;
+    background-color: #3333ff;
+    border-radius: 25%;
+
+    opacity: 100;
+    transform: translateX(0);
+    transition: all 0.4s ease-in-out;
+}
+.burger__line2_active {
+	position: absolute;
+    left: 0;
+    top: 15px;
+    width: 30px;
+    height: 5px;
+    background-color: #3333ff;
+    border-radius: 25%;
+
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: all 0.4s ease-in-out;
+}
+.burger__line3 {
+	position: absolute;
+	left: 0;
+	top: 5px;
+	width: 30px;
+	height: 5px;
+    background-color: black;
+    border-radius: 25%;
+
+    transform: rotate(0deg);
+    transform-origin: 5%;
+    transition: transform 0.5s;
+}
+.burger__line3_active {
+	position: absolute;
+	left: 0;
+	top: 5px;
+	width: 30px;
+	height: 5px;
+    background-color: black;
+    border-radius: 25%;
+
+    transform: rotate(45deg);
+    transform-origin: 5%;
+    transition: transform 0.5s;
+}
+.burger__line4 {
+	position: absolute;
+	left: 0;
+	top: 25px;
+	width: 30px;
+	height: 5px;
+    background-color: black;
+    border-radius: 25%;
+
+    transform: rotate(0deg);
+    transform-origin: 5%;
+    transition: transform 0.5s;
+}
+.burger__line4_active {
+	position: absolute;
+	left: 0;
+	top: 25px;
+	width: 30px;
+	height: 5px;
+    background-color: black;
+    border-radius: 25%;
+
+    transform: rotate(-45deg);
+    transform-origin: 5%;
+    transition: transform 0.5s;
+}

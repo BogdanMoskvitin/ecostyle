@@ -1,0 +1,37 @@
+.bg {
+    background-color: rgba(255, 255, 255, 0.5);
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+}
+.production {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.production__title {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 20px 0;
+}
+.production__box_cell {
+    padding-top: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.production__cell {
+    margin: 30px;
+}
+.production__subtitle {
+    font-size: 20px;
+    margin: 5px 0;
+    text-align: center;
+}
+.line {
+    border: 1px solid #e5e5e5;
+    width: 100%;
+    margin: 5px 0;
+}
+img {
+    max-width: 300px;
+}

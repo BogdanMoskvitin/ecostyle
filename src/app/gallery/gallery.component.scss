@@ -1,0 +1,22 @@
+.bg {
+    background-color: rgba(255, 255, 255, 0.5);
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+}
+.gallery {
+    padding-top: 150px;
+    max-width: 1210px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+img {
+    width: 290px;
+    margin: 10px 5px;
+    transition: 1s;
+}
+img:hover {
+    transform: scale(1.2);
+}
