@@ -1,0 +1,74 @@
+<div class="header">
+    <div class="header__container">
+        <a routerLink="/">
+            <img src="images/logo.png" alt="EcoStyle" class="header__logo">
+        </a>
+
+        <div class="header__nav">
+            <a 
+                class="header__nav_item" 
+                routerLink="/" 
+                routerLinkActive="header__nav_item-active"
+                [routerLinkActiveOptions]="{ exact: true }">
+                ГЛАВНАЯ
+            </a>
+
+            <a 
+                class="header__nav_item" 
+                routerLink="/services" 
+                routerLinkActive="header__nav_item-active">
+                УСЛУГИ
+            </a>
+
+            <a 
+                class="header__nav_item" 
+                routerLink="/gallery" 
+                routerLinkActive="header__nav_item-active">
+                ГАЛЕРЕЯ
+            </a>
+        </div>
+
+        <div class="header__phone">
+            <img src="icons/phone.svg" alt="Телефон">
+            <a class="header__phone_number" href="tel:+79624008366">8 (962) 400-83-66</a>
+        </div>
+
+        <button class="header__burger" (click)="toggleMenu()" [class.active]="isMenuOpen()">
+            <div class="header__burger_line"></div>
+            <div class="header__burger_line"></div>
+            <div class="header__burger_line"></div>
+        </button>
+    </div>
+
+    <div class="header__mobile_menu" [class.open]="isMenuOpen()">
+        <a 
+            class="header__nav_item" 
+            routerLink="/" 
+            routerLinkActive="header__nav_item-active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="toggleMenu()">
+            ГЛАВНАЯ
+        </a>
+
+        <a 
+            class="header__nav_item" 
+            routerLink="/services" 
+            routerLinkActive="header__nav_item-active"
+            (click)="toggleMenu()">
+            УСЛУГИ
+        </a>
+
+        <a 
+            class="header__nav_item" 
+            routerLink="/gallery" 
+            routerLinkActive="header__nav_item-active"
+            (click)="toggleMenu()">
+            ГАЛЕРЕЯ
+        </a>
+
+        <div class="header__mobile_phone">
+            <img src="icons/phone.svg" alt="Телефон">
+            <a class="header__phone_number" href="tel:+79624008366">8 (962) 400-83-66</a>
+        </div>
+    </div>
+</div>
