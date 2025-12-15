@@ -1,1 +1,189 @@
-<p>home works!</p>
+<div class="hero">
+    <div class="hero__container">
+        <div></div>
+
+        <div>
+            <div class="hero__title">
+                <span>EcoStyle</span>
+                 — безупречный пол начинается здесь
+            </div>
+
+            <div class="hero__subtitle">
+                Профессиональная укладка, реставрация и лестницы под ключ
+            </div>
+        </div>
+
+        <div class="hero__btns">
+            <button class="hero__btns_btn-request" (click)="submitRequest()">
+                Оставить заявку
+            </button>
+
+            <button class="hero__btns_btn-gallery" routerLink="/gallery">
+                Смотреть галерею
+            </button>
+        </div>
+    </div>
+
+    <div class="arrows" (click)="scrollDown()">
+        <img class="arrow arrow1" src="icons/down.svg" alt="">
+        <img class="arrow arrow2" src="icons/down.svg" alt="">
+        <img class="arrow arrow3" src="icons/down.svg" alt="">
+    </div>
+</div>
+
+<div class="advantages">
+    <div class="advantages__item">
+        <img src="icons/work_history.svg" alt="">
+        <div class="advantages__item_text">10+ лет опыта</div>
+    </div>
+
+    <div class="advantages__item">
+        <img src="icons/construction.svg" alt="">
+        <div class="advantages__item_text">профессиональное оборудование</div>
+    </div>
+
+    <div class="advantages__item">
+        <img src="icons/eco.svg" alt="">
+        <div class="advantages__item_text">экологичные материалы</div>
+    </div>
+
+    <div class="advantages__item">
+        <img src="icons/assignment.svg" alt="">
+        <div class="advantages__item_text">работает по проектам любой сложности</div>
+    </div>
+</div>
+
+<div class="services">
+    <div class="services__container">
+        <div class="services__title">Мы предлагаем следующие виды услуг:</div>
+
+        <div class="services__items">
+            <div 
+                class="services__items_item" 
+                *ngFor="let service of services" 
+                (click)="service.isOpen = !service.isOpen"
+            >
+                <div class="services__items_item-title">{{service.title}}</div>
+                <ul class="services__items_item-list" *ngIf="service.isOpen">
+                    <li *ngFor="let item of service.list">{{item}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="gallery">
+    <div class="gallery__container">
+        <div class="gallery__title">Наши работы:</div>
+
+        <div class="gallery__images">
+            <img 
+                class="gallery__images_image" 
+                *ngFor="let image of images" 
+                [src]="image.src" 
+                alt=""
+            >
+        </div>
+    </div>
+</div>
+
+<div class="about">
+    <div class="about__container">
+        <div>
+            <div class="about__title">О нас:</div>
+
+            <div class="about__text">
+                <span>EcoStyle</span> - это профессиональная компания, специализирующаяся на деревянных интерьерных работах: монтажа и реставрации паркета и лестниц, настилу напольных покрытий, отделке помещений деревом.
+            </div>
+        </div>
+
+        <img class="about__img" src="images/about.jpg" alt="">
+    </div>
+</div>
+
+<div class="stages">
+    <div class="stages__container">
+        <div class="stages__item">
+            <img src="icons/stage-phone.svg" alt="">
+            <div class="stages__item_text">консультация</div>
+        </div>
+        
+        <div class="stages__item">
+            <img src="icons/stage-measuring_tape.svg" alt="">
+            <div class="stages__item_text">выезд и замер</div>
+        </div>
+
+        <div class="stages__item">
+            <img src="icons/stage-request_quote.svg" alt="">
+            <div class="stages__item_text">смета</div>
+        </div>
+
+        <div class="stages__item">
+            <img src="icons/stage-contract_edit.svg" alt="">
+            <div class="stages__item_text">заключение договора</div>
+        </div>
+
+        <div class="stages__item">
+            <img src="icons/stage-construction.svg" alt="">
+            <div class="stages__item_text">работы</div>
+        </div>
+
+        <div class="stages__item">
+            <img src="icons/stage-license.svg" alt="">
+            <div class="stages__item_text">гарантия</div>
+        </div>
+    </div>
+</div>
+
+<div class="reviews">
+    <div class="reviews__container">
+        <div class="reviews__title">Отзывы:</div>
+
+        <div class="reviews__items">
+            <div 
+                class="reviews__items_item" 
+                *ngFor="let review of reviews" 
+            >
+                <div>
+                    <div class="reviews__items_item-name">{{review.name}}</div>
+
+                    <div class="reviews__items_item-text">{{review.text}}</div>
+                </div>
+                
+                <div class="reviews__items_item-rating">
+                    <ng-container *ngFor="let star of getRatingStars(review.rating)">
+                        <img [src]="star.src">
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="contact">
+    <div class="contact__container">
+        <div class="contact__title">Контактная информация:</div>
+
+        <div class="contact__items">
+            <div class="contact__items_item">
+                <img src="icons/contact-phone.svg">
+                <a class="contact__items_item-text" href="tel:+79624008366">8 (962) 400-83-66</a>
+            </div>
+
+            <div class="contact__items_item">
+                <img src="icons/contact-email.svg">
+                <div class="contact__items_item-text">ecostyle@gmail.com</div>
+            </div>
+
+            <div class="contact__items_item">
+                <img src="icons/contact-insta.svg">
+                <div class="contact__items_item-text">@ecostyle</div>
+            </div>
+
+            <div class="contact__items_item">
+                <img src="icons/contact-location.svg">
+                <div class="contact__items_item-text">г.Ставрополь</div>
+            </div>
+        </div>
+    </div>
+</div>
