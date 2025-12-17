@@ -1,0 +1,115 @@
+.services {
+    background: #F0F0F0;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+
+    &__container {
+        max-width: 1440px;
+        width: 100%;
+        padding: 30px 10px;
+    }
+
+    &__title {
+        font-size: 26px;
+        font-weight: bold;
+        color: #333333;
+        margin-bottom: 20px;
+    }
+
+    &__items {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        &_item {
+            background: #FAFAFA;
+            border-radius: 5px;
+            padding: 10px 15px;
+            width: 250px;
+            box-shadow:
+                0 4px 12px rgba(0, 0, 0, 0.08),
+                0 1px 3px rgba(0, 0, 0, 0.04);
+
+            &-title {
+                font-size: 20px;
+                font-weight: 500;
+                color: #333333;
+                text-align: center;
+            }
+
+            &-list {
+                padding: 10px 0 0 20px;
+
+                li {
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: #333333;
+                    margin-bottom: 10px;
+                }
+
+                li::marker {
+                    color: #A1C181;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .services {
+        &__title {
+            font-size: 20px;
+        }
+    }
+}
+
+
+
+.contacts {
+    background: #F9F6F1;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+
+    &__container {
+        max-width: 1440px;
+        width: 100%;
+        padding: 30px 10px;
+    }
+
+    &__title {
+        font-size: 26px;
+        font-weight: bold;
+        color: #333333;
+        margin-bottom: 20px;
+    }
+
+    &__items {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        &_item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            &-text {
+                font-size: 16px;
+                font-weight: 400;
+                color: #333333;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .contacts {
+        &__title {
+            font-size: 20px;
+        }
+    }
+}

@@ -1,1 +1,45 @@
-<p>services works!</p>
+<div class="services">
+    <div class="services__container">
+        <div class="services__title">Мы предлагаем следующие виды услуг:</div>
+
+        <div class="services__items">
+            <div 
+                *ngFor="let service of services"
+                class="services__items_item" 
+            >
+                <div class="services__items_item-title">{{service.title}}</div>
+                <ul class="services__items_item-list">
+                    <li *ngFor="let item of service.list">{{item}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="contacts">
+    <div class="contacts__container">
+        <div class="contacts__title">Контактная информация:</div>
+
+        <div class="contacts__items">
+            <div class="contacts__items_item">
+                <img src="icons/contact-phone.svg">
+                <a class="contacts__items_item-text" href="tel:+79624008366">8 (962) 400-83-66</a>
+            </div>
+
+            <div class="contacts__items_item">
+                <img src="icons/contact-email.svg">
+                <div class="contacts__items_item-text">ecostyle@gmail.com</div>
+            </div>
+
+            <div class="contacts__items_item">
+                <img src="icons/contact-insta.svg">
+                <div class="contacts__items_item-text">@ecostyle</div>
+            </div>
+
+            <div class="contacts__items_item">
+                <img src="icons/contact-location.svg">
+                <div class="contacts__items_item-text">г.Ставрополь</div>
+            </div>
+        </div>
+    </div>
+</div>

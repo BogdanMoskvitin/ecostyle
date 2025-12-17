@@ -58,16 +58,18 @@
         <div class="services__title">Мы предлагаем следующие виды услуг:</div>
 
         <div class="services__items">
-            <div 
-                class="services__items_item" 
-                *ngFor="let service of services" 
-                (click)="service.isOpen = !service.isOpen"
-            >
-                <div class="services__items_item-title">{{service.title}}</div>
-                <ul class="services__items_item-list" *ngIf="service.isOpen">
-                    <li *ngFor="let item of service.list">{{item}}</li>
-                </ul>
-            </div>
+            <ng-container *ngFor="let service of services">
+                <div 
+                    class="services__items_item" 
+                    (click)="service.isOpen = !service.isOpen"
+                    *ngIf="service.isHome"
+                >
+                    <div class="services__items_item-title">{{service.title}}</div>
+                    <ul class="services__items_item-list" *ngIf="service.isOpen">
+                        <li *ngFor="let item of service.list">{{item}}</li>
+                    </ul>
+                </div>
+            </ng-container>
         </div>
     </div>
 </div>
@@ -77,12 +79,13 @@
         <div class="gallery__title">Наши работы:</div>
 
         <div class="gallery__images">
-            <img 
-                class="gallery__images_image" 
-                *ngFor="let image of images" 
-                [src]="image.src" 
-                alt=""
-            >
+            <ng-container *ngFor="let image of images">
+                <img 
+                    class="gallery__images_image" 
+                    [src]="image.src" 
+                    *ngIf="image.isHome"
+                >
+            </ng-container>
         </div>
     </div>
 </div>
@@ -160,29 +163,29 @@
     </div>
 </div>
 
-<div class="contact">
-    <div class="contact__container">
-        <div class="contact__title">Контактная информация:</div>
+<div class="contacts">
+    <div class="contacts__container">
+        <div class="contacts__title">Контактная информация:</div>
 
-        <div class="contact__items">
-            <div class="contact__items_item">
+        <div class="contacts__items">
+            <div class="contacts__items_item">
                 <img src="icons/contact-phone.svg">
-                <a class="contact__items_item-text" href="tel:+79624008366">8 (962) 400-83-66</a>
+                <a class="contacts__items_item-text" href="tel:+79624008366">8 (962) 400-83-66</a>
             </div>
 
-            <div class="contact__items_item">
+            <div class="contacts__items_item">
                 <img src="icons/contact-email.svg">
-                <div class="contact__items_item-text">ecostyle@gmail.com</div>
+                <div class="contacts__items_item-text">ecostyle@gmail.com</div>
             </div>
 
-            <div class="contact__items_item">
+            <div class="contacts__items_item">
                 <img src="icons/contact-insta.svg">
-                <div class="contact__items_item-text">@ecostyle</div>
+                <div class="contacts__items_item-text">@ecostyle</div>
             </div>
 
-            <div class="contact__items_item">
+            <div class="contacts__items_item">
                 <img src="icons/contact-location.svg">
-                <div class="contact__items_item-text">г.Ставрополь</div>
+                <div class="contacts__items_item-text">г.Ставрополь</div>
             </div>
         </div>
     </div>

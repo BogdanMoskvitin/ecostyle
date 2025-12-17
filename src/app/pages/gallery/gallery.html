@@ -1,1 +1,48 @@
-<p>gallery works!</p>
+<div class="gallery">
+    <div class="gallery__container">
+        <div class="gallery__flex">
+            <div class="gallery__title">Наши работы:</div>
+
+            <button class="gallery__btn">
+                Фильтр
+            </button>
+        </div>
+
+        <div class="gallery__images">
+            <img 
+                class="gallery__images_image" 
+                *ngFor="let image of images" 
+                [src]="image.src" 
+                alt=""
+            >
+        </div>
+    </div>
+</div>
+
+<div class="contacts">
+    <div class="contacts__container">
+        <div class="contacts__title">Контактная информация:</div>
+
+        <div class="contacts__items">
+            <div class="contacts__items_item">
+                <img src="icons/contact-phone.svg">
+                <a class="contacts__items_item-text" href="tel:+79624008366">8 (962) 400-83-66</a>
+            </div>
+
+            <div class="contacts__items_item">
+                <img src="icons/contact-email.svg">
+                <div class="contacts__items_item-text">ecostyle@gmail.com</div>
+            </div>
+
+            <div class="contacts__items_item">
+                <img src="icons/contact-insta.svg">
+                <div class="contacts__items_item-text">@ecostyle</div>
+            </div>
+
+            <div class="contacts__items_item">
+                <img src="icons/contact-location.svg">
+                <div class="contacts__items_item-text">г.Ставрополь</div>
+            </div>
+        </div>
+    </div>
+</div>

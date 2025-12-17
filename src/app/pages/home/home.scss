@@ -445,7 +445,7 @@
 
 
 
-.contact {
+.contacts {
     background: #F9F6F1;
     display: flex;
     justify-content: center;
@@ -485,7 +485,7 @@
 }
 
 @media (max-width: 768px) {
-    .contact {
+    .contacts {
         &__title {
             font-size: 20px;
         }

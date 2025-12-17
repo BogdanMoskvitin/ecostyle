@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { images, services } from '../../services/data';
 
 @Component({
   selector: 'app-home',
@@ -10,61 +11,9 @@ import { RouterModule } from '@angular/router';
   styleUrl: './home.scss',
 })
 export class Home {
-  services = [
-    {
-      isOpen: false,
-      title: 'напольные покрытия',
-      list: [
-        'монтаж деревянных лестниц', 
-        'монтаж бетонного, металлического основания лестницы',
-        'ограждение лестницы (дерево, металл, ковка)',
-        'обшивка деревянным массивом лестницы',
-        'реставрация старых лестниц'
-      ]
-    },
-    {
-      isOpen: false,
-      title: 'лестницы',
-      list: [
-        'монтаж деревянных лестниц', 
-        'монтаж бетонного, металлического основания лестницы',
-        'ограждение лестницы (дерево, металл, ковка)',
-        'обшивка деревянным массивом лестницы',
-        'реставрация старых лестниц'
-      ]
-    },
-    {
-      isOpen: false,
-      title: 'реставрация',
-      list: []
-    },
-    {
-      isOpen: false,
-      title: 'плинтус',
-      list: [
-        'монтаж плинтуса (деревянного, мдф, полимерного, полиуретанового, пластикого)',
-        'покраска плинтуса'
-      ]
-    }
-  ];
+  services = services;
 
-  images = [
-    {
-      src: 'images/1.jpg'
-    },
-    {
-      src: 'images/2.jpg'
-    },
-    {
-      src: 'images/3.jpg'
-    },
-    {
-      src: 'images/4.jpg'
-    },
-    {
-      src: 'images/1.jpg'
-    },
-  ];
+  images = images;
 
   reviews = [
     {
