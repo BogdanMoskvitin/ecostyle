@@ -606,13 +606,37 @@
         width: 100%;
         padding: 30px 10px;
     }
+    
+    &__flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
 
     &__title {
         font-size: 26px;
         font-weight: bold;
         color: #333333;
-        margin-bottom: 20px;
         user-select: none;
+    }
+
+    &__btn {
+        width: 200px;
+        height: 40px;
+        border-radius: 5px;
+        border: 2px solid #A1C181;
+        background: none;
+        color: #333333;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.2s;
+
+        &:hover {
+            transform: translateY(-2px);
+            background: #A1C181;
+        }
     }
 
     &__items {

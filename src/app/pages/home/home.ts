@@ -1,7 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { images, services } from '../../services/data';
+import { Service } from '../../models/service';
+import { Api } from '../../services/api';
+import { Image } from '../../models/image';
+import { Review } from '../../models/review';
 
 @Component({
   selector: 'app-home',
@@ -10,28 +13,43 @@ import { images, services } from '../../services/data';
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-export class Home {
-  services = services;
+export class Home implements OnInit {
+  title = '';
+  subtitle = '';
+  about_text = '';
+  about_img = '';
+  services: Service[] = [];
+  images: Image[] = [];
+  reviews: Review[] = [];
+  
+  constructor(private api: Api) {}
 
-  images = images;
+  ngOnInit(): void {
+    this.api.getGeneral().subscribe(res => {
+      this.title = res.data.title;
+      this.subtitle = res.data.subtitle;
+      this.about_text = res.data.about_text;
+      this.about_img = 'http://localhost:1337' + res.data.about_img.url;
+    });
 
-  reviews = [
-    {
-      name: 'Иван Иванов',
-      text: 'Отличные мастера, сделали все быстро, качественно. Нареканий нет. Еще и не дорого',
-      rating: 3.5,
-    },
-    {
-      name: 'Антонио Бандерос',
-      text: 'Ну сойдет. Паркет постелили наизнанку. Но в целом не плохо.',
-      rating: 3,
-    },
-    {
-      name: 'Дональд',
-      text: 'Мы сделаем Америку снова великой! Здесь должен быть какой то длинный текст для примера',
-      rating: 4.5,
-    }
-  ]
+    this.api.getServices().subscribe(res => {
+      this.services = res.data.map((service: Service) => ({
+        ...service,
+        isOpen: false
+      }));
+    });
+    
+    this.api.getImages().subscribe(res => {
+      this.images = res.data.map((item: any) => ({
+        ...item,
+        src: 'http://localhost:1337' + item.image.url
+      }));
+    });
+    
+    this.api.getReviews().subscribe(res => {
+      this.reviews = res.data;
+    });
+  }
 
   submitRequest() {}
 
@@ -49,10 +67,6 @@ export class Home {
     
     for (let i = 0; i < Math.floor(rating); i++) {
       stars.push({ src: 'icons/star_fill.svg' });
-    }
-
-    if (rating % 1 >= 0.5) {
-      stars.push({ src: 'icons/star_half.svg' });
     }
 
     for (let i = stars.length; i < 5; i++) {

@@ -9,7 +9,12 @@
                     (click)="toggleFilter()">
                     Фильтр
                 </button>
-                <img class="gallery__filter_icon" src="icons/filter.svg" alt="" (click)="toggleFilter()">
+                <img 
+                    class="gallery__filter_icon" 
+                    src="icons/filter.svg" 
+                    alt="" 
+                    (click)="toggleFilter()"
+                >
 
                 <div class="gallery__filter_items" *ngIf="isOpenFilter">
                     <label

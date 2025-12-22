@@ -5,11 +5,11 @@
         <div>
             <div class="hero__title">
                 <span>EcoStyle</span>
-                 — безупречный пол начинается здесь
+                 — {{ title }}
             </div>
 
             <div class="hero__subtitle">
-                Профессиональная укладка, реставрация и лестницы под ключ
+                {{ subtitle }}
             </div>
         </div>
 
@@ -74,7 +74,7 @@
                 >
                     <div class="services__items_item-title">{{service.title}}</div>
                     <ul class="services__items_item-list" *ngIf="service.isOpen">
-                        <li *ngFor="let item of service.list">{{item}}</li>
+                        <li *ngFor="let item of service.items">{{item.text}}</li>
                     </ul>
                 </div>
             </ng-container>
@@ -118,11 +118,11 @@
             <div class="about__title">О нас:</div>
 
             <div class="about__text">
-                <span>EcoStyle</span> - это профессиональная компания, специализирующаяся на деревянных интерьерных работах: монтажа и реставрации паркета и лестниц, настилу напольных покрытий, отделке помещений деревом.
+                <span>EcoStyle</span> - {{ about_text }}
             </div>
         </div>
 
-        <img class="about__img" src="images/about.jpg" alt="">
+        <img class="about__img" [src]="about_img" alt="">
     </div>
 </div>
 
@@ -162,7 +162,11 @@
 
 <div class="reviews">
     <div class="reviews__container">
-        <div class="reviews__title">Отзывы:</div>
+        <div class="reviews__flex">
+            <div class="reviews__title">Отзывы:</div>
+
+            <button class="reviews__btn">Оставить отзыв</button>
+        </div>
 
         <div class="reviews__items">
             <div 
