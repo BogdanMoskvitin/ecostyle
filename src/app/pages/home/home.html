@@ -55,7 +55,15 @@
 
 <div class="services">
     <div class="services__container">
-        <div class="services__title">Мы предлагаем следующие виды услуг:</div>
+        <div class="services__flex">
+            <div class="services__title">Мы предлагаем следующие виды услуг:</div>
+
+            <a routerLink="/services">
+                <span class="services__link_text">смотреть больше</span>
+                
+                <img class="services__link_icon" src="icons/arrow_right.svg" alt="">
+            </a>
+        </div>
 
         <div class="services__items">
             <ng-container *ngFor="let service of services">
@@ -76,15 +84,29 @@
 
 <div class="gallery">
     <div class="gallery__container">
-        <div class="gallery__title">Наши работы:</div>
+        <div class="gallery__flex">
+            <div class="gallery__title">Наши работы:</div>
 
-        <div class="gallery__images">
+            <div class="gallery__flex">
+                <a routerLink="/gallery">
+                    <span class="gallery__link_text">смотреть больше</span>
+                    
+                    <img class="gallery__link_icon" src="icons/arrow_right.svg" alt="">
+                </a>
+            </div>
+        </div>
+
+        <div class="gallery__items">
             <ng-container *ngFor="let image of images">
-                <img 
-                    class="gallery__images_image" 
-                    [src]="image.src" 
-                    *ngIf="image.isHome"
-                >
+                <div class="gallery__items_item" *ngIf="image.isHome">
+                    <img 
+                        class="gallery__items_item-img" 
+                        [src]="image.src" 
+                    >
+                    <div class="gallery__items_item-overlay" *ngIf="image.text">
+                        <div class="gallery__items_item-text">{{image.text}}</div>
+                    </div>
+                </div>
             </ng-container>
         </div>
     </div>
@@ -170,22 +192,33 @@
         <div class="contacts__items">
             <div class="contacts__items_item">
                 <img src="icons/contact-phone.svg">
-                <a class="contacts__items_item-text" href="tel:+79624008366">8 (962) 400-83-66</a>
+                <a class="contacts__items_item-text" href="tel:+79624008366">
+                    +7 (962) 400-83-66
+                </a>
             </div>
 
             <div class="contacts__items_item">
                 <img src="icons/contact-email.svg">
-                <div class="contacts__items_item-text">ecostyle@gmail.com</div>
+                <a class="contacts__items_item-text" href="mailto:ecostyle@gmail.com">
+                    ecostyle@gmail.com
+                </a>
             </div>
 
             <div class="contacts__items_item">
                 <img src="icons/contact-insta.svg">
-                <div class="contacts__items_item-text">@ecostyle</div>
+                <a 
+                    class="contacts__items_item-text" 
+                    href="https://www.instagram.com/ecostyle" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    aria-label="Instagram EcoStyle">
+                    @ecostyle
+                </a>
             </div>
 
             <div class="contacts__items_item">
                 <img src="icons/contact-location.svg">
-                <div class="contacts__items_item-text">г.Ставрополь</div>
+                <address class="contacts__items_item-text">г.Ставрополь</address>
             </div>
         </div>
     </div>

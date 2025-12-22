@@ -22,9 +22,15 @@
             color: #333333;
             font-size: 18px;
             text-decoration: none;
+            transition: 0.4s;
+            border-bottom: 1px solid transparent;
 
             &-active {
                 color: #FE7F2D;
+            }
+
+            &:hover {
+                border-bottom: 1px solid #FE7F2D;
             }
         }
     }
@@ -90,6 +96,7 @@
         opacity: 0;
         pointer-events: none;
         transition: transform 0.3s ease, opacity 0.3s ease;
+        z-index: 10;
 
         &.open {
             transform: translateY(0);

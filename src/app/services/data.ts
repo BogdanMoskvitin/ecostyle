@@ -73,19 +73,26 @@ export const services = [
 export const images = [
     {
         src: 'images/1.jpg',
-        isHome: true
+        isHome: true,
+        text: 'Паркет Елочка',
+        category: 'Напольные покрытия'
     },
     {
         src: 'images/2.jpg',
-        isHome: true
+        isHome: true,
+        text: 'Какое то длинное описание фотографии',
+        category: 'Шлифовка'
     },
     {
         src: 'images/3.jpg',
-        isHome: true
+        isHome: true,
+        text: 'Еще один паркет',
+        category: 'Лестницы'
     },
     {
         src: 'images/4.jpg',
-        isHome: true
+        isHome: true,
+        text: 'пу-пу-пу'
     },
     {
         src: 'images/1.jpg',
@@ -118,5 +125,24 @@ export const images = [
     {
         src: 'images/4.jpg',
         isHome: false
+    }
+];
+
+export const filters = [
+    {
+        filter: 'Напольные покрытия',
+        isSelect: true
+    },
+    {
+        filter: 'Шлифовка',
+        isSelect: true
+    },
+    {
+        filter: 'Лестницы',
+        isSelect: true
+    },
+    {
+        filter: 'Другое',
+        isSelect: true
     }
 ];

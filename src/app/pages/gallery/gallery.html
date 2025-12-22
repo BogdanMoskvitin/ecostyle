@@ -3,18 +3,42 @@
         <div class="gallery__flex">
             <div class="gallery__title">Наши работы:</div>
 
-            <button class="gallery__btn">
-                Фильтр
-            </button>
+            <div class="gallery__filter" #filterRoot>
+                <button
+                    class="gallery__filter_button"
+                    (click)="toggleFilter()">
+                    Фильтр
+                </button>
+                <img class="gallery__filter_icon" src="icons/filter.svg" alt="" (click)="toggleFilter()">
+
+                <div class="gallery__filter_items" *ngIf="isOpenFilter">
+                    <label
+                        *ngFor="let filter of filters"
+                        class="gallery__filter_items-item"
+                        (click)="$event.stopPropagation()"
+                    >
+                        <input
+                            type="checkbox"
+                            [checked]="filter.isSelect"
+                            (change)="filter.isSelect = !filter.isSelect"
+                        />
+
+                        {{ filter.filter }}
+                    </label>
+                </div>
+            </div>
         </div>
 
-        <div class="gallery__images">
-            <img 
-                class="gallery__images_image" 
-                *ngFor="let image of images" 
-                [src]="image.src" 
-                alt=""
-            >
+        <div class="gallery__items">
+            <div class="gallery__items_item" *ngFor="let image of filteredImages">
+                <img 
+                    class="gallery__items_item-img" 
+                    [src]="image.src" 
+                >
+                <div class="gallery__items_item-overlay" *ngIf="image.text">
+                    <div class="gallery__items_item-text">{{image.text}}</div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -26,22 +50,33 @@
         <div class="contacts__items">
             <div class="contacts__items_item">
                 <img src="icons/contact-phone.svg">
-                <a class="contacts__items_item-text" href="tel:+79624008366">8 (962) 400-83-66</a>
+                <a class="contacts__items_item-text" href="tel:+79624008366">
+                    +7 (962) 400-83-66
+                </a>
             </div>
 
             <div class="contacts__items_item">
                 <img src="icons/contact-email.svg">
-                <div class="contacts__items_item-text">ecostyle@gmail.com</div>
+                <a class="contacts__items_item-text" href="mailto:ecostyle@gmail.com">
+                    ecostyle@gmail.com
+                </a>
             </div>
 
             <div class="contacts__items_item">
                 <img src="icons/contact-insta.svg">
-                <div class="contacts__items_item-text">@ecostyle</div>
+                <a 
+                    class="contacts__items_item-text" 
+                    href="https://www.instagram.com/ecostyle" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    aria-label="Instagram EcoStyle">
+                    @ecostyle
+                </a>
             </div>
 
             <div class="contacts__items_item">
                 <img src="icons/contact-location.svg">
-                <div class="contacts__items_item-text">г.Ставрополь</div>
+                <address class="contacts__items_item-text">г.Ставрополь</address>
             </div>
         </div>
     </div>

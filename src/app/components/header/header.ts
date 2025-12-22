@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, Renderer2 } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -9,9 +9,17 @@ import { RouterModule } from '@angular/router';
   styleUrl: './header.scss',
 })
 export class Header {
-  isMenuOpen = signal(false);
+  isMenuOpen = false;
+
+  private renderer = inject(Renderer2);
 
   toggleMenu() {
-    this.isMenuOpen.update(open => !open);
+    this.isMenuOpen = !this.isMenuOpen;
+
+    if (this.isMenuOpen) {
+      this.renderer.addClass(document.body, 'no-scroll');
+    } else {
+      this.renderer.removeClass(document.body, 'no-scroll');
+    }
   }
 }

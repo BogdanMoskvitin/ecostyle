@@ -30,17 +30,17 @@
 
         <div class="header__phone">
             <img src="icons/contact-phone.svg" alt="Телефон">
-            <a class="header__phone_number" href="tel:+79624008366">8 (962) 400-83-66</a>
+            <a class="header__phone_number" href="tel:+79624008366">+7 (962) 400-83-66</a>
         </div>
 
-        <button class="header__burger" (click)="toggleMenu()" [class.active]="isMenuOpen()">
+        <button class="header__burger" (click)="toggleMenu()" [class.active]="isMenuOpen">
             <div class="header__burger_line"></div>
             <div class="header__burger_line"></div>
             <div class="header__burger_line"></div>
         </button>
     </div>
 
-    <div class="header__mobile_menu" [class.open]="isMenuOpen()">
+    <div class="header__mobile_menu" [class.open]="isMenuOpen">
         <a 
             class="header__nav_item" 
             routerLink="/" 
@@ -68,7 +68,7 @@
 
         <div class="header__mobile_phone">
             <img src="icons/contact-phone.svg" alt="Телефон">
-            <a class="header__phone_number" href="tel:+79624008366">8 (962) 400-83-66</a>
+            <a class="header__phone_number" href="tel:+79624008366">+7 (962) 400-83-66</a>
         </div>
     </div>
 </div>
