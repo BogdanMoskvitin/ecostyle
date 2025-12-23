@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { IService } from '../../models/service';
 import { Api } from '../../services/api';
@@ -26,7 +26,7 @@ export class Home implements OnInit {
   isRequestOpen = false;
   isReviewOpen = false;
   
-  constructor(private api: Api) {}
+  constructor(private api: Api, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.api.getGeneral().subscribe(res => {
@@ -34,6 +34,7 @@ export class Home implements OnInit {
       this.subtitle = res.data.subtitle;
       this.about_text = res.data.about_text;
       this.about_img = 'http://localhost:1337' + res.data.about_img.url;
+      this.cdr.detectChanges();
     });
 
     this.api.getServices().subscribe(res => {
@@ -41,6 +42,7 @@ export class Home implements OnInit {
         ...service,
         isOpen: false
       }));
+      this.cdr.detectChanges();
     });
     
     this.api.getImages().subscribe(res => {
@@ -48,10 +50,12 @@ export class Home implements OnInit {
         ...item,
         src: 'http://localhost:1337' + item.image.url
       }));
+      this.cdr.detectChanges();
     });
     
     this.api.getReviews().subscribe(res => {
       this.reviews = res.data;
+      this.cdr.detectChanges();
     });
   }
 

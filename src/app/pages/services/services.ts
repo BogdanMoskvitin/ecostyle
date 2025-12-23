@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Api } from '../../services/api';
 import { IService } from '../../models/service';
@@ -13,11 +13,12 @@ import { IService } from '../../models/service';
 export class Services implements OnInit {
   services: IService[] = [];
 
-  constructor(private api: Api) {}
+  constructor(private api: Api, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.api.getServices().subscribe(res => {
       this.services = res.data;
+      this.cdr.detectChanges();
     });
   }
 }

@@ -1,4 +1,11 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { 
+  ChangeDetectorRef, 
+  Component, 
+  ElementRef, 
+  HostListener, 
+  OnInit, 
+  ViewChild 
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IImage } from '../../models/image';
 import { Api } from '../../services/api';
@@ -18,7 +25,7 @@ export class Gallery implements OnInit {
   isOpenFilter = false;
   filters: IFilter[] = [];
   
-  constructor(private api: Api) {}
+  constructor(private api: Api, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.api.getImages().subscribe(res => {
@@ -26,6 +33,7 @@ export class Gallery implements OnInit {
         ...item,
         src: 'http://localhost:1337' + item.image.url
       }));
+      this.cdr.detectChanges();
     });
 
     this.api.getFilters().subscribe(res => {
@@ -33,6 +41,7 @@ export class Gallery implements OnInit {
         ...item,
         isSelect: true
       }));
+      this.cdr.detectChanges();
     });
   }
 
