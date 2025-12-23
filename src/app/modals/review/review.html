@@ -1,0 +1,35 @@
+<div class="review__overlay" (click)="close.emit()">
+    <div class="review__modal" (click)="$event.stopPropagation()">
+        <button class="review__modal_btn-close" (click)="close.emit()">×</button>
+
+        <div class="review__modal_title">Оставить отзыв</div>
+
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <input
+                type="text"
+                placeholder="Имя"
+                formControlName="name"
+            />
+
+            <textarea
+                placeholder="Комментарий"
+                formControlName="text"
+            ></textarea>
+
+            <div class="review__modal_rating">
+                <img 
+                    *ngFor="let star of stars; let i = index"
+                    [src]="getStarIcon(i)"
+                    (mouseenter)="onHover(i)"
+                    (mouseleave)="onLeave()" 
+                    (click)="onRate(i)"
+                    class="review__modal_rating-icon"
+                >
+            </div>
+
+            <button class="review__modal_btn-submit" type="submit" [disabled]="form.invalid">
+                Отправить
+            </button>
+        </form>
+    </div>
+</div>

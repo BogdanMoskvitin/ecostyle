@@ -1,10 +1,10 @@
-export interface Service {
+export interface IService {
   title: string;
   isHome: boolean;
-  items: ServiceItem[];
+  items: IServiceItem[];
   isOpen: boolean;
 }
 
-interface ServiceItem {
+interface IServiceItem {
   text: string;
 }

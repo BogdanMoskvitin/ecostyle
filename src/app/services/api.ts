@@ -18,7 +18,12 @@ export class Api {
   }
 
   getReviews() {
-    return this.http.get<any>(`${this.api}/reviews`);
+    return this.http.get<any>(`${this.api}/reviews`, {
+      params: {
+        'sort': 'createdAt:desc',
+        'pagination[limit]': 3
+      }
+    });
   }
 
   getFilters() {
@@ -27,5 +32,13 @@ export class Api {
 
   getGeneral() {
     return this.http.get<any>(`${this.api}/general?populate=*`);
+  }
+
+  sendRequest(formData: any) {
+    return this.http.post(`${this.api}/requests`, { data: formData });
+  }
+
+  sendReview(formData: any) {
+    return this.http.post(`${this.api}/reviews`, { data: formData });
   }
 }

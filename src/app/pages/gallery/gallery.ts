@@ -1,8 +1,8 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Image } from '../../models/image';
+import { IImage } from '../../models/image';
 import { Api } from '../../services/api';
-import { Filter } from '../../models/filter';
+import { IFilter } from '../../models/filter';
 
 @Component({
   selector: 'app-gallery',
@@ -14,9 +14,9 @@ import { Filter } from '../../models/filter';
 export class Gallery implements OnInit {
   @ViewChild('filterRoot') filterRoot!: ElementRef;
 
-  images: Image[] = [];
+  images: IImage[] = [];
   isOpenFilter = false;
-  filters: Filter[] = [];
+  filters: IFilter[] = [];
   
   constructor(private api: Api) {}
 

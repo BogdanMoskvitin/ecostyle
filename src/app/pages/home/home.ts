@@ -1,15 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Service } from '../../models/service';
+import { IService } from '../../models/service';
 import { Api } from '../../services/api';
-import { Image } from '../../models/image';
-import { Review } from '../../models/review';
+import { IImage } from '../../models/image';
+import { IReview } from '../../models/review';
+import { Request } from '../../modals/request/request';
+import { Review } from '../../modals/review/review';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, Request, Review],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
@@ -18,9 +20,11 @@ export class Home implements OnInit {
   subtitle = '';
   about_text = '';
   about_img = '';
-  services: Service[] = [];
-  images: Image[] = [];
-  reviews: Review[] = [];
+  services: IService[] = [];
+  images: IImage[] = [];
+  reviews: IReview[] = [];
+  isRequestOpen = false;
+  isReviewOpen = false;
   
   constructor(private api: Api) {}
 
@@ -33,7 +37,7 @@ export class Home implements OnInit {
     });
 
     this.api.getServices().subscribe(res => {
-      this.services = res.data.map((service: Service) => ({
+      this.services = res.data.map((service: IService) => ({
         ...service,
         isOpen: false
       }));

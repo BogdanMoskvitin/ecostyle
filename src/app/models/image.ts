@@ -1,4 +1,4 @@
-export interface Image {
+export interface IImage {
   src: string;
   text: string;
   isHome: boolean;

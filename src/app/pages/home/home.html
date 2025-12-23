@@ -14,7 +14,7 @@
         </div>
 
         <div class="hero__btns">
-            <button class="hero__btns_btn-request" (click)="submitRequest()">
+            <button class="hero__btns_btn-request" (click)="isRequestOpen = true">
                 Оставить заявку
             </button>
 
@@ -30,6 +30,8 @@
         <img class="arrow arrow3" src="icons/down.svg" alt="">
     </div>
 </div>
+
+<app-request *ngIf="isRequestOpen" (close)="isRequestOpen = false"></app-request>
 
 <div class="advantages">
     <div class="advantages__item">
@@ -165,7 +167,9 @@
         <div class="reviews__flex">
             <div class="reviews__title">Отзывы:</div>
 
-            <button class="reviews__btn">Оставить отзыв</button>
+            <button class="reviews__btn" (click)="isReviewOpen = true">
+                Оставить отзыв
+            </button>
         </div>
 
         <div class="reviews__items">
@@ -188,6 +192,8 @@
         </div>
     </div>
 </div>
+
+<app-review *ngIf="isReviewOpen" (close)="isReviewOpen = false"></app-review>
 
 <div class="contacts">
     <div class="contacts__container">

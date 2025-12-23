@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Api } from '../../services/api';
-import { Service } from '../../models/service';
+import { IService } from '../../models/service';
 
 @Component({
   selector: 'app-services',
@@ -11,7 +11,7 @@ import { Service } from '../../models/service';
   styleUrl: './services.scss',
 })
 export class Services implements OnInit {
-  services: Service[] = [];
+  services: IService[] = [];
 
   constructor(private api: Api) {}
 

@@ -1,0 +1,30 @@
+<div class="request__overlay" (click)="close.emit()">
+    <div class="request__modal" (click)="$event.stopPropagation()">
+        <button class="request__modal_btn-close" (click)="close.emit()">×</button>
+
+        <div class="request__modal_title">Оставить заявку</div>
+
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <input
+                type="text"
+                placeholder="Имя"
+                formControlName="name"
+            />
+
+            <input
+                type="tel"
+                placeholder="Телефон"
+                formControlName="phone"
+            />
+
+            <textarea
+                placeholder="Комментарий"
+                formControlName="message"
+            ></textarea>
+
+            <button class="request__modal_btn-submit" type="submit" [disabled]="form.invalid">
+                Отправить
+            </button>
+        </form>
+    </div>
+</div>
