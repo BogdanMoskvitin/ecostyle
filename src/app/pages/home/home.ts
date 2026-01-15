@@ -7,6 +7,7 @@ import { IImage } from '../../models/image';
 import { IReview } from '../../models/review';
 import { Request } from '../../modals/request/request';
 import { Review } from '../../modals/review/review';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -33,7 +34,7 @@ export class Home implements OnInit {
       this.title = res.data.title;
       this.subtitle = res.data.subtitle;
       this.about_text = res.data.about_text;
-      this.about_img = 'http://localhost:1337' + res.data.about_img.url;
+      this.about_img = environment.apiUrl + res.data.about_img.url;
       this.cdr.detectChanges();
     });
 
@@ -48,7 +49,7 @@ export class Home implements OnInit {
     this.api.getImages().subscribe(res => {
       this.images = res.data.map((item: any) => ({
         ...item,
-        src: 'http://localhost:1337' + item.image.url
+        src: environment.apiUrl + item.image.url
       }));
       this.cdr.detectChanges();
     });

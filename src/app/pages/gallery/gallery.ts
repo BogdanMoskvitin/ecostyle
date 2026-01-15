@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { IImage } from '../../models/image';
 import { Api } from '../../services/api';
 import { IFilter } from '../../models/filter';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-gallery',
@@ -31,7 +32,7 @@ export class Gallery implements OnInit {
     this.api.getImages().subscribe(res => {
       this.images = res.data.map((item: any) => ({
         ...item,
-        src: 'http://localhost:1337' + item.image.url
+        src: environment.apiUrl + item.image.url
       }));
       this.cdr.detectChanges();
     });
