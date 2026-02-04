@@ -1,4 +1,6 @@
 export interface IFilter {
-  filter: string;
+  id: number;
+  name: string;
+  isDefault: boolean;
   isSelect: boolean;
 }

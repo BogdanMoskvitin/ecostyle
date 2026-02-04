@@ -12,3 +12,7 @@ body.no-scroll {
   overflow: hidden;
   touch-action: none;
 }
+
+html, body {
+  height: 100%;
+}

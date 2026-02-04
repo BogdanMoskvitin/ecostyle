@@ -1,0 +1,21 @@
+<div class="select" #selectRoot>
+    <button
+        class="select__button"
+        (click)="toggleSelect()">
+        {{ selectedCategory ? selectedCategory.name : 'Категория (по умолчанию)' }}
+    </button>
+
+    <div class="select__items" *ngIf="isOpenSelect">
+        <button 
+            class="select__items-item"
+            (click)="selectedCategory = null; isOpenSelect = false">
+            Категория (по умолчанию)
+        </button>
+        <button 
+            *ngFor="let item of items"
+            class="select__items-item"
+            (click)="selectItem(item)">
+            {{ item.name }}
+        </button>
+    </div>
+</div>

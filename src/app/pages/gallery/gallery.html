@@ -28,7 +28,7 @@
                             (change)="filter.isSelect = !filter.isSelect"
                         />
 
-                        {{ filter.filter }}
+                        {{ filter.name }}
                     </label>
                 </div>
             </div>
@@ -38,51 +38,14 @@
             <div class="gallery__items_item" *ngFor="let image of filteredImages">
                 <img 
                     class="gallery__items_item-img" 
-                    [src]="image.src" 
+                    [src]="image.url" 
                 >
-                <div class="gallery__items_item-overlay" *ngIf="image.text">
-                    <div class="gallery__items_item-text">{{image.text}}</div>
+                <div class="gallery__items_item-overlay" *ngIf="image.description">
+                    <div class="gallery__items_item-text">{{image.description}}</div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="contacts">
-    <div class="contacts__container">
-        <div class="contacts__title">Контактная информация:</div>
-
-        <div class="contacts__items">
-            <div class="contacts__items_item">
-                <img src="icons/contact-phone.svg">
-                <a class="contacts__items_item-text" href="tel:+79624008366">
-                    +7 (962) 400-83-66
-                </a>
-            </div>
-
-            <div class="contacts__items_item">
-                <img src="icons/contact-email.svg">
-                <a class="contacts__items_item-text" href="mailto:ecostyle@gmail.com">
-                    ecostyle@gmail.com
-                </a>
-            </div>
-
-            <div class="contacts__items_item">
-                <img src="icons/contact-insta.svg">
-                <a 
-                    class="contacts__items_item-text" 
-                    href="https://www.instagram.com/ecostyle" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    aria-label="Instagram EcoStyle">
-                    @ecostyle
-                </a>
-            </div>
-
-            <div class="contacts__items_item">
-                <img src="icons/contact-location.svg">
-                <address class="contacts__items_item-text">г.Ставрополь</address>
-            </div>
-        </div>
-    </div>
-</div>
+<app-contacts></app-contacts>

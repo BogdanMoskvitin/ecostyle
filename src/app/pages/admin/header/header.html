@@ -1,0 +1,41 @@
+<div class="header">
+    <div class="header__container">
+        <a 
+            class="header__link" 
+            routerLink="/admin/general"
+            routerLinkActive="header__link-active"
+            [routerLinkActiveOptions]="{ exact: true }">
+            Основные
+        </a>
+
+        <a 
+            class="header__link" 
+            routerLink="/admin/services"
+            routerLinkActive="header__link-active">
+            Услуги
+        </a>
+
+        <a 
+            class="header__link" 
+            routerLink="/admin/images"
+            routerLinkActive="header__link-active">
+            Галерея
+        </a>
+
+        <a 
+            class="header__link" 
+            routerLink="/admin/filters"
+            routerLinkActive="header__link-active">
+            Фильтры
+        </a>
+
+        <a 
+            class="header__link" 
+            routerLink="/admin/reviews"
+            routerLinkActive="header__link-active">
+            Отзывы
+        </a>
+
+        <button class="header__btn" (click)="logout()">Выйти</button>
+    </div>
+</div>

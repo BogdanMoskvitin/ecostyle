@@ -1,10 +1,7 @@
 export interface IService {
-  title: string;
-  isHome: boolean;
-  items: IServiceItem[];
+  id: number;
+  name: string;
+  showOnMain: boolean;
+  items: string[];
   isOpen: boolean;
-}
-
-interface IServiceItem {
-  text: string;
 }

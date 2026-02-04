@@ -1,0 +1,83 @@
+<admin-header></admin-header>
+
+<div class="services">
+  <div class="services__container">
+    <div class="services__subtitle">Добавить услугу</div>
+
+    <input [(ngModel)]="newService.name" placeholder="Название услуги" />
+
+    <label class="services__checkbox">
+      <input type="checkbox" [(ngModel)]="newService.showOnMain" />
+      Показывать на главной
+    </label>
+
+    <div class="services__subtitle">Пункты услуги</div>
+
+    <div class="services__item_add">
+      <input [(ngModel)]="newItemText" placeholder="Новый пункт" />
+      <button 
+        class="services__item_add-btn"
+        (click)="addItem()">
+        +
+      </button>
+    </div>
+
+    <ul class="services__items">
+      <li *ngFor="let item of newService.items; let i = index">
+        {{ item }}
+        <button 
+          class="services__items_delete-btn" 
+          (click)="removeItem(i)">
+          x
+        </button>
+      </li>
+    </ul>
+
+    <button class="services__add-btn" (click)="addService()">Добавить услугу</button>
+
+    <div class="services__subtitle">Список услуг</div>
+
+    <div class="services__list">
+      <div 
+        *ngFor="let service of services"
+        class="services__list_item" 
+      >
+        <input [(ngModel)]="service.name" (blur)="update(service)" />
+
+        <label class="services__checkbox">
+          <input 
+            type="checkbox" 
+            [(ngModel)]="service.showOnMain" 
+            (change)="update(service)" />
+            На главной
+        </label>
+
+        <ul class="services__items">
+          <li *ngFor="let item of service.items; let i = index">
+            {{item}}
+            <button 
+              class="services__items_delete-btn" 
+              (click)="removeItemFromService(service, i)">
+              x
+            </button>
+          </li>
+        </ul>
+
+        <div class="services__item_add">
+          <input #itemInput placeholder="Новый пункт" />
+          <button 
+            class="services__item_add-btn" 
+            (click)="addItemToService(service, itemInput.value); itemInput.value = ''">
+            +
+          </button>
+        </div>
+
+        <button 
+          class="services__delete-btn" 
+          (click)="remove(service.id)">
+          Удалить услугу
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

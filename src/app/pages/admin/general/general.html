@@ -1,0 +1,41 @@
+<admin-header></admin-header>
+
+<div class="general">
+  <div class="general__container">
+    @if (isLoading) {
+      <div>Загрузка...</div>
+    } @else {
+      <div>
+        <label>Заголовок</label>
+        <input [(ngModel)]="model.title" />
+      </div>
+
+      <div>
+        <label>Подзаголовок</label>
+        <input [(ngModel)]="model.subtitle" />
+      </div>
+
+      <div>
+        <label>О нас (текст)</label>
+        <textarea [(ngModel)]="model.aboutText"></textarea>
+      </div>
+
+      <div>
+        <label>О нас (картинка)</label>
+
+        @if (model.aboutImageUrl) {
+          <img [src]="model.aboutImageUrl" />
+        }
+
+        <div class="file-upload">
+          <label class="file-upload__btn">
+            Выбрать изображение
+            <input type="file" (change)="onFileSelected($event)" hidden />
+          </label>
+        </div>
+      </div>
+
+      <button class="general__btn" (click)="save()" [disabled]="isSaving">Сохранить</button>
+    }
+  </div>
+</div>

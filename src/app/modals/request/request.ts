@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, ChangeDetectionStrategy, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Api } from '../../services/api';
+import { RequestsApi } from '../../services/requests-api';
 import { ToastService } from '../toast/toast.service';
 
 @Component({
   selector: 'app-request',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ReactiveFormsModule],
   templateUrl: './request.html',
   styleUrl: './request.scss',
@@ -16,7 +17,7 @@ export class Request {
 
   constructor(
     private fb: FormBuilder, 
-    private api: Api,
+    private requestsApi: RequestsApi,
     private toast: ToastService
   ) {
     this.form = this.fb.group({
@@ -29,7 +30,7 @@ export class Request {
   submit() {
     if (this.form.invalid) return;
 
-    this.api.sendRequest(this.form.value).subscribe(() => {
+    this.requestsApi.sendRequest(this.form.value).subscribe(() => {
       this.toast.success('Заявка успешно отправлена!');
     })
     

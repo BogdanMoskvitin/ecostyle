@@ -1,0 +1,14 @@
+<div class="login">
+    <div class="login__container">
+        <div class="login__title">Админка</div>
+
+        <input 
+            type="password" 
+            placeholder="Пароль" 
+            [(ngModel)]="password" 
+            (keyup.enter)="login()" 
+        />
+
+        <button class="login__btn" (click)="login()" [disabled]="isLoading">Войти</button>
+    </div>
+</div>

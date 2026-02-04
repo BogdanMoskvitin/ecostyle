@@ -1,6 +1,7 @@
 import { 
   ChangeDetectorRef, 
   Component, 
+  ChangeDetectionStrategy,
   ElementRef, 
   HostListener, 
   OnInit, 
@@ -8,14 +9,17 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IImage } from '../../models/image';
-import { Api } from '../../services/api';
+import { ImagesApi } from '../../services/images-api';
 import { IFilter } from '../../models/filter';
 import { environment } from '../../../environments/environment';
+import { FiltersApi } from '../../services/filters-api';
+import { Contacts } from '../../components/contacts/contacts';
 
 @Component({
   selector: 'app-gallery',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, Contacts],
   templateUrl: './gallery.html',
   styleUrl: './gallery.scss',
 })
@@ -26,23 +30,27 @@ export class Gallery implements OnInit {
   isOpenFilter = false;
   filters: IFilter[] = [];
   
-  constructor(private api: Api, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private imagesApi: ImagesApi, 
+    private cdr: ChangeDetectorRef, 
+    private filtersApi: FiltersApi
+  ) {}
 
   ngOnInit(): void {
-    this.api.getImages().subscribe(res => {
-      this.images = res.data.map((item: any) => ({
+    this.imagesApi.getAll().subscribe(res => {
+      this.images = res.map((item: any) => ({
         ...item,
         src: environment.apiUrl + item.image.url
       }));
-      this.cdr.detectChanges();
+      this.cdr.markForCheck();
     });
 
-    this.api.getFilters().subscribe(res => {
-      this.filters = res.data.map((item: any) => ({
+    this.filtersApi.getAll().subscribe(res => {
+      this.filters = res.map((item: any) => ({
         ...item,
         isSelect: true
       }));
-      this.cdr.detectChanges();
+      this.cdr.markForCheck();
     });
   }
 
@@ -60,12 +68,13 @@ export class Gallery implements OnInit {
   get selectedCategories(): string[] {
     return this.filters
       .filter(f => f.isSelect)
-      .map(f => f.filter);
+      .map(f => f.name);
   }
 
   get filteredImages() {
     return this.images.filter(image => {
-      const category = image.category ?? 'Другое';
+      // const category = image.categoryId ?? 'Другое';
+      const category = '';
       return this.selectedCategories.includes(category);
     });
   }

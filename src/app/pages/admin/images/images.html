@@ -1,0 +1,85 @@
+<admin-header></admin-header>
+
+<div class="images">
+  <div class="images__container">
+    <div class="images__subtitle">Добавить картинку</div>
+
+    <div class="file-upload">
+      <label class="file-upload__btn">
+        Выбрать изображение
+        <input type="file" (change)="onFileSelected($event)" #fileInput hidden />
+      </label>
+    </div>
+    <img *ngIf="previewUrl" [src]="previewUrl" />
+
+    <input [(ngModel)]="newImage.description" placeholder="Описание" />
+
+    <div class="select" (click)="$event.stopPropagation()">
+      <button
+        class="select__button"
+        (click)="openSelectId = openSelectId === 'new' ? null : 'new'">
+        {{ selectedCategory?.name || 'Категория (по умолчанию)' }}
+      </button>
+
+      <div class="select__items" *ngIf="openSelectId === 'new'">
+        <button 
+          class="select__items-item"
+          (click)="selectItem()">
+          Категория (по умолчанию)
+        </button>
+
+        <button 
+          *ngFor="let filter of filters"
+          class="select__items-item"
+          (click)="selectItem(filter)">
+          {{ filter.name }}
+        </button>
+      </div>
+    </div>
+
+    <label class="images__checkbox">
+      <input type="checkbox" [(ngModel)]="newImage.showOnMain" />
+      Показывать на главной
+    </label>
+
+    <button class="images__add-btn" (click)="add()">Добавить</button>
+
+    <div class="images__subtitle">Список</div>
+
+    <div *ngFor="let img of images">
+      <img [src]="img.url" />
+      <input [(ngModel)]="img.description" (blur)="update(img)" />
+
+      <div class="select" (click)="$event.stopPropagation()">
+        <button
+          class="select__button"
+          (click)="openSelectId = openSelectId === img.id ? null : img.id">
+          {{ getCategoryName(img.categoryId) || 'Категория (по умолчанию)' }}
+        </button>
+
+        <div class="select__items" *ngIf="openSelectId === img.id">
+          <button 
+            class="select__items-item"
+            (click)="selectCategoryForImage(img, undefined)">
+            Категория (по умолчанию)
+          </button>
+
+          <button 
+            *ngFor="let filter of filters"
+            class="select__items-item"
+            (click)="selectCategoryForImage(img, filter.id)">
+            {{ filter.name }}
+          </button>
+        </div>
+      </div>
+
+      <label class="images__checkbox">
+        <input type="checkbox" [(ngModel)]="img.showOnMain" (change)="update(img)" />
+        На главной
+      </label>
+
+      <button class="images__delete-btn" (click)="remove(img.id)">Удалить</button>
+    </div>
+  </div>
+</div>
+

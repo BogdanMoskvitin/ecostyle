@@ -1,0 +1,21 @@
+<admin-header></admin-header>
+
+<div class="filters">
+  <div class="filters__container">
+    <input [(ngModel)]="newName" placeholder="Новый фильтр">
+    <button class="filters__btn" (click)="add()">Добавить</button>
+
+    @for (filter of filters; track filter.id) {
+      <div class="filters__filter">
+        <input [(ngModel)]="filter.name" (blur)="update(filter)">
+
+        <button 
+          class="filters__filter_btn" 
+          (click)="remove(filter.id)" 
+          [disabled]="filter.isDefault">
+          x
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, ChangeDetectionStrategy, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Api } from '../../services/api';
+import { ReviewsApi } from '../../services/reviews-api';
 import { ToastService } from '../toast/toast.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-review',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './review.html',
   styleUrl: './review.scss',
@@ -19,7 +20,7 @@ export class Review {
 
   constructor(
     private fb: FormBuilder, 
-    private api: Api,
+    private reviewsApi: ReviewsApi,
     private toast: ToastService
   ) {
     this.form = this.fb.group({
@@ -32,7 +33,13 @@ export class Review {
   submit() {
     if (this.form.invalid) return;
 
-    this.api.sendReview(this.form.value).subscribe(() => {
+    const data = {
+      name: this.form.value.name ? this.form.value.name : undefined,
+      text: this.form.value.text ? this.form.value.text : undefined,
+      rating: this.form.value.rating ? this.form.value.rating : undefined,
+    }
+
+    this.reviewsApi.send(data).subscribe(() => {
       this.toast.success('Отзыв успешно отправлен!');
     })
     

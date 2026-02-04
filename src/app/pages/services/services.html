@@ -7,50 +7,13 @@
                 *ngFor="let service of services"
                 class="services__items_item" 
             >
-                <div class="services__items_item-title">{{service.title}}</div>
+                <div class="services__items_item-title">{{service.name}}</div>
                 <ul class="services__items_item-list">
-                    <li *ngFor="let item of service.items">{{item.text}}</li>
+                    <li *ngFor="let item of service.items">{{item}}</li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
 
-<div class="contacts">
-    <div class="contacts__container">
-        <div class="contacts__title">Контактная информация:</div>
-
-        <div class="contacts__items">
-            <div class="contacts__items_item">
-                <img src="icons/contact-phone.svg">
-                <a class="contacts__items_item-text" href="tel:+79624008366">
-                    +7 (962) 400-83-66
-                </a>
-            </div>
-
-            <div class="contacts__items_item">
-                <img src="icons/contact-email.svg">
-                <a class="contacts__items_item-text" href="mailto:ecostyle@gmail.com">
-                    ecostyle@gmail.com
-                </a>
-            </div>
-
-            <div class="contacts__items_item">
-                <img src="icons/contact-insta.svg">
-                <a 
-                    class="contacts__items_item-text" 
-                    href="https://www.instagram.com/ecostyle" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    aria-label="Instagram EcoStyle">
-                    @ecostyle
-                </a>
-            </div>
-
-            <div class="contacts__items_item">
-                <img src="icons/contact-location.svg">
-                <address class="contacts__items_item-text">г.Ставрополь</address>
-            </div>
-        </div>
-    </div>
-</div>
+<app-contacts></app-contacts>

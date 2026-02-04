@@ -1,8 +1,9 @@
-import { Component, inject, Renderer2 } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, Renderer2 } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [RouterModule],
   templateUrl: './header.html',

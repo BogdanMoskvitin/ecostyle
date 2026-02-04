@@ -1,6 +1,7 @@
 export interface IImage {
-  src: string;
-  text: string;
-  isHome: boolean;
-  category: string;
+  id: number;
+  url: string;
+  description: string;
+  categoryId: number | undefined;
+  showOnMain: boolean;
 }

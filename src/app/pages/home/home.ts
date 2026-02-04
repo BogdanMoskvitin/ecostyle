@@ -1,18 +1,23 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { IService } from '../../models/service';
-import { Api } from '../../services/api';
+import { GeneralApi } from '../../services/general-api';
+import { ServicesApi } from '../../services/services-api';
+import { ImagesApi } from '../../services/images-api';
+import { ReviewsApi } from '../../services/reviews-api';
 import { IImage } from '../../models/image';
 import { IReview } from '../../models/review';
 import { Request } from '../../modals/request/request';
 import { Review } from '../../modals/review/review';
 import { environment } from '../../../environments/environment';
+import { Contacts } from '../../components/contacts/contacts';
 
 @Component({
   selector: 'app-home',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [RouterModule, CommonModule, Request, Review],
+  imports: [RouterModule, CommonModule, Request, Review, Contacts],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
@@ -27,36 +32,42 @@ export class Home implements OnInit {
   isRequestOpen = false;
   isReviewOpen = false;
   
-  constructor(private api: Api, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private generalApi: GeneralApi, 
+    private servicesApi: ServicesApi,
+    private imagesApi: ImagesApi, 
+    private reviewsApi: ReviewsApi,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
-    this.api.getGeneral().subscribe(res => {
-      this.title = res.data.title;
-      this.subtitle = res.data.subtitle;
-      this.about_text = res.data.about_text;
-      this.about_img = environment.apiUrl + res.data.about_img.url;
-      this.cdr.detectChanges();
+    this.generalApi.get().subscribe(res => {
+      this.title = res.title;
+      this.subtitle = res.subtitle;
+      this.about_text = res.aboutText;
+      this.about_img = environment.apiUrl + res.aboutImageUrl;
+      this.cdr.markForCheck();
     });
 
-    this.api.getServices().subscribe(res => {
-      this.services = res.data.map((service: IService) => ({
+    this.servicesApi.getAll().subscribe(res => {
+      this.services = res.map((service: IService) => ({
         ...service,
         isOpen: false
       }));
-      this.cdr.detectChanges();
+      this.cdr.markForCheck();
     });
     
-    this.api.getImages().subscribe(res => {
-      this.images = res.data.map((item: any) => ({
+    this.imagesApi.getAll().subscribe(res => {
+      this.images = res.map((item: any) => ({
         ...item,
         src: environment.apiUrl + item.image.url
       }));
-      this.cdr.detectChanges();
+      this.cdr.markForCheck();
     });
     
-    this.api.getReviews().subscribe(res => {
-      this.reviews = res.data;
-      this.cdr.detectChanges();
+    this.reviewsApi.getAll().subscribe(res => {
+      this.reviews = res;
+      this.cdr.markForCheck();
     });
   }
 

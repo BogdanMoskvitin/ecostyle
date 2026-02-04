@@ -1,0 +1,26 @@
+<admin-header></admin-header>
+
+<div class="reviews">
+  <div class="reviews__container">
+    @if (isLoading) {
+      <div>Загрузка...</div>
+    }
+
+    @if (!isLoading && !reviews.length) {
+      <div>Отзывов нет</div>
+    }
+
+    <div class="reviews__item" *ngFor="let review of reviews">
+      <div>
+        <div class="reviews__item_name">{{review.name}}</div>
+        <div class="reviews__item_text">{{review.text}}</div>
+      </div>
+      
+      <div class="reviews__item_rating">
+        <img *ngFor="let star of getRatingStars(review.rating)" [src]="star.src">
+      </div>
+
+      <button class="reviews__item_btn" (click)="remove(review.id)">Удалить отзыв</button>
+    </div>
+  </div>
+</div>
