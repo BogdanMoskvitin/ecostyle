@@ -25,7 +25,7 @@
                         <input
                             type="checkbox"
                             [checked]="filter.isSelect"
-                            (change)="filter.isSelect = !filter.isSelect"
+                            (change)="onFilterChange(filter)"
                         />
 
                         {{ filter.name }}

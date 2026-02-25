@@ -39,7 +39,7 @@ export class AdminGeneral implements OnInit {
     this.generalApi.get().subscribe(res => {
       this.model = res;
       this.isLoading = false;
-      this.cdr.markForCheck();
+      this.cdr.detectChanges();
     });
   }
 
@@ -59,6 +59,7 @@ export class AdminGeneral implements OnInit {
 
     this.uploadApi.upload(formData).subscribe(res => {
       this.model.aboutImageUrl = res.url;
+      this.cdr.detectChanges();
     });
   }
 }

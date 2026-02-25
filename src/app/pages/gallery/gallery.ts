@@ -38,16 +38,16 @@ export class Gallery implements OnInit {
 
   ngOnInit(): void {
     this.imagesApi.getAll().subscribe(res => {
-      this.images = res.map((item: any) => ({
-        ...item,
-        src: environment.apiUrl + item.image.url
+      this.images = res.map((image: IImage) => ({
+        ...image,
+        url: environment.apiUrl + image.url
       }));
       this.cdr.markForCheck();
     });
 
     this.filtersApi.getAll().subscribe(res => {
-      this.filters = res.map((item: any) => ({
-        ...item,
+      this.filters = res.map((filter: IFilter) => ({
+        ...filter,
         isSelect: true
       }));
       this.cdr.markForCheck();
@@ -65,17 +65,25 @@ export class Gallery implements OnInit {
     }
   }
 
-  get selectedCategories(): string[] {
+  get selectedCategoryIds(): number[] {
     return this.filters
       .filter(f => f.isSelect)
-      .map(f => f.name);
+      .map(f => f.id);
   }
 
-  get filteredImages() {
-    return this.images.filter(image => {
-      // const category = image.categoryId ?? 'Другое';
-      const category = '';
-      return this.selectedCategories.includes(category);
-    });
+  get filteredImages(): IImage[] {
+    if (!this.selectedCategoryIds.length) {
+      return this.images;
+    }
+
+    return this.images.filter(image =>
+      image.categoryId != null &&
+      this.selectedCategoryIds.includes(image.categoryId)
+    );
+  }
+
+  onFilterChange(filter: IFilter) {
+    filter.isSelect = !filter.isSelect;
+    this.cdr.detectChanges();
   }
 }

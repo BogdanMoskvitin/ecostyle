@@ -58,9 +58,9 @@ export class Home implements OnInit {
     });
     
     this.imagesApi.getAll().subscribe(res => {
-      this.images = res.map((item: any) => ({
-        ...item,
-        src: environment.apiUrl + item.image.url
+      this.images = res.map((image: IImage) => ({
+        ...image,
+        url: environment.apiUrl + image.url
       }));
       this.cdr.markForCheck();
     });
@@ -70,8 +70,6 @@ export class Home implements OnInit {
       this.cdr.markForCheck();
     });
   }
-
-  submitRequest() {}
 
   scrollDown() {
     const vh = window.innerHeight;

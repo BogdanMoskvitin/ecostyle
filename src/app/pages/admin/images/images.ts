@@ -124,6 +124,7 @@ export class AdminImages implements OnInit {
     const reader = new FileReader();
     reader.onload = () => {
       this.previewUrl = reader.result as string;
+      this.cdr.detectChanges();
     };
     reader.readAsDataURL(file);
   }
