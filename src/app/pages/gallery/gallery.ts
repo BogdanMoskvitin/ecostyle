@@ -46,10 +46,21 @@ export class Gallery implements OnInit {
     });
 
     this.filtersApi.getAll().subscribe(res => {
-      this.filters = res.map((filter: IFilter) => ({
+      const apiFilters = res.map((filter: IFilter) => ({
         ...filter,
         isSelect: true
       }));
+
+      this.filters = [
+        {
+          id: 0,
+          name: 'Все',
+          isDefault: true,
+          isSelect: true
+        },
+        ...apiFilters
+      ]
+      
       this.cdr.markForCheck();
     });
   }
@@ -67,12 +78,15 @@ export class Gallery implements OnInit {
 
   get selectedCategoryIds(): number[] {
     return this.filters
-      .filter(f => f.isSelect)
+      .filter(f => f.isSelect && f.id !== 0)
       .map(f => f.id);
   }
 
   get filteredImages(): IImage[] {
-    if (!this.selectedCategoryIds.length) {
+    const categoryFilters = this.filters.filter(f => f.id !== 0);
+    const selectedFilters = categoryFilters.filter(f => f.isSelect);
+
+    if (selectedFilters.length === categoryFilters.length) {
       return this.images;
     }
 
@@ -83,7 +97,23 @@ export class Gallery implements OnInit {
   }
 
   onFilterChange(filter: IFilter) {
-    filter.isSelect = !filter.isSelect;
+    const allFilter = this.filters.find(f => f.id === 0)!;
+    const categoryFilters = this.filters.filter(f => f.id !== 0);
+
+    if (filter.id === 0) {
+      const newValue = !filter.isSelect;
+      this.filters.forEach(f => f.isSelect = newValue);
+    } else {
+      filter.isSelect = !filter.isSelect;
+      const allSelected = categoryFilters.every(f => f.isSelect);
+
+      if (allSelected) {
+        allFilter.isSelect = true;
+      } else {
+        allFilter.isSelect = false;
+      }
+    }
+
     this.cdr.detectChanges();
   }
 }
